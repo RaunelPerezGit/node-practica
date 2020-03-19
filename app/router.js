@@ -2,12 +2,18 @@ const express = require('express');
 const Router = express.Router();
 const controllers = require('./controllers');
 const planController = require('./controllers/plan');
+const profileController = require('./controllers/profile');
 
 Router
     .get('/',controllers.index)
     .post('/chat',controllers.chat)
     .get('/plan',planController.selectPlan)
-    .post('/plan',planController.insertPricePlan);
+    .delete('/plan',planController.deletePlan)
+    .post('/plan',planController.insertPricePlan)
+    .post('/profile',profileController.insertProfile)
+    .delete('/profile',profileController.deleteProfile)
+    .get('/profile',profileController.selectProfile)
+    
 
 
 module.exports = Router;

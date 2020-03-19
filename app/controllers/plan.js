@@ -46,9 +46,22 @@ let insertPricePlan = async(req, res) => {
     }
 }
 
+let deletePlan = async(req, res)=>{
+    const body = req.body;
+    await pool.query(`update priceplan set status=false where id_pripla=${body.id_pripla}RETURNING id_pripla;`,function (err, rows, fields) {
+        if (err) {
+            res.status(200).json({ ok: false, message: 'Ocurrio un error al intentar eliminar este campo' });
+        } else {
+            res.status(200).json({ok: true, id: rows.rows[0].id_pripla, message: 'Fué eliminado con éxito'});   
+        }
+    });
+        
+}
+
 
 
 module.exports = {
     selectPlan,
-    insertPricePlan
+    insertPricePlan,
+    deletePlan
 }
