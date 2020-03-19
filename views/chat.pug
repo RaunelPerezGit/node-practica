@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        link(rel="stylesheet", href="/css/main.css")
+        link(rel="stylesheet", href="/css/chat.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+        script(src="/socket.io/socket.io.js")
+        script(src="/scripts/chat.js")
+        title chat
+    body
+        #container.full-height.full-width
+            #chat-area.full-width
+                #messages.full-height
+                    #msgs-list
+                #users-list.full-height
+                    .full-height.full-width
+                        h2 Usuarios Online
+                        #users
+            form#send-msg-form
+                textarea#message.lighter(name="message", placeholder="Escribe un mensaje")
+                button#send-msg-btn
+                    i.fa.fa-paper-plane
