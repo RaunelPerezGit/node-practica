@@ -10,6 +10,7 @@ async function selectPlan(req, res) {
 
 let insertPricePlan = async(req, res) => {
     const body = req.body;
+    
     const exist_plan = await pool.query(`select * from plan where name_plan = '${body.name}'`);
     if (exist_plan.rows.length > 0) {
         //res.status(200).json(exist_plan.rows);

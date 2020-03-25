@@ -11,11 +11,5 @@ html(lang="en")
         script(src="/socket.io/socket.io.js")
         script(src="/scripts/registro.js")
     body
-        #welcome(class='full-height full-width')
-            form#registro-form(action="http://localhost:3000/chat", method="POST")
-                h1(class='center') Bienvenido!
-                p(class='center lighter') Ingrese sus datos:
-                input#username(type="text", name="username", placeholder="Usuario" required="true")
-                input#passwd(type="password", name="passwd", placeholder="Password" required="true")
-                button#send-form(class="lighter") INGRESAR
+        button(class="lighter", onclick="send();") INGRESAR
 

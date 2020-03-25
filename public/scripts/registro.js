@@ -1,7 +1,13 @@
-window.onload = function(){
-    document.getElementById('send-form')
-        .addEventListener('click', function(ev){
-            localStorage.username = document.getElementById('username').value;
-            localStorage.passwd = document.getElementById('passwd').value;
-        })
+function send(){
+    $.ajax({
+        data: {"name":"ulises"},
+        url:"http://127.0.0.1:3000/login", 
+        type:"post",
+        success:function(datos){ 
+            console.log("returned: ", datos)
+        },
+        error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+        }
+    })
 }
