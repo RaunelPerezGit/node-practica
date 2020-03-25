@@ -1,19 +1,27 @@
 const pool = require('../../database/connection');
 
+// 3- AñadirCuentas(userx)
+// 5- Falta algo del sistema de notificaciones, para informarle cuando ha Sido invitado como colaborador(con sockets o algo asi) 
+// 6- Añadir Guess(user-Enterprise)
+
 // NOTE This method checks first if the user exists if is the case returned the user
 // if the user not exist in the BD save the user and return him
 let login = async(req, res) => {
     
+    
     const body = req.body;
     const username = body.nickname;
     const sub = body.sub;
+    
 
     // NOTE Verified if the user exist
     const exist_user = await pool.query(`SELECT * FROM users JOIN userprofile ON users.id_use = userprofile.users WHERE sub = '${sub}'`);
     if (exist_user.rows.length > 0) {
         res.status(200).json({
             ok: true,
-            user: exist_user.rows
+            username: exist_user.rows[0].username,
+            sub: exist_user.rows[0].sub,
+            profile: exist_user.rows[0].profile
         })
     }else{
         //NOTE save the user

@@ -1,10 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 app.set('port', process.env.PORT || 3000);
 const server = require('http').Server(app);
 const Router = require('./app/router');
+app.use(cors({
+    'allowedHeaders': ['sessionId', 'Content-Type'],
+    'exposedHeaders': ['sessionId'],
+    'origin': '*',
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+  }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
