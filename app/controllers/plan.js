@@ -54,8 +54,7 @@ let deletePlan = async(req, res)=>{
         } else {
             res.status(200).json({ok: true, id: rows.rows[0].id_pripla, message: 'Fué eliminado con éxito'});   
         }
-    });
-        
+    });     
 }
 
 
